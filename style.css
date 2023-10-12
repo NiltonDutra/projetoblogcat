@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  --webkit-font-smoothing: antialiased;
+  --moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --color-title: #202024;
+  --color-text: #121214;
+  --color-white: #ffffff;
+  --color-gray: rgba(255, 255, 255, 0.20);
+  --color-header: #065e7c;
+  --color-footer: #387e96;
+  
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Mulish", sans-serif;
+  font-size: 1.6rem;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  height: 72px;
+  padding: 1.2rem 2.8rem;
+  background-color: var(--color-header);
+
+  --startY: -100%;
+  animation: move .2s;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+}
+
+nav form {
+  flex: 1;
+}
+
+.logo {
+
+  float: left;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: .8rem;
+  shape-outside: circle();
+  clip-path: circle();
+  background: #F4FCFF;
+
+}
+
+nav form label {
+  display: none;
+}
+
+nav form input {
+  width: 100%;
+  padding: 1.2rem 1.6rem 1.2rem 1.4rem;
+
+  background-color: var(--color-gray);
+  color: var(--color-white);
+  font-weight: 600;
+
+  border-radius: .4rem;
+  border: none;
+}
+
+nav form input::placeholder {
+  color: var(--color-white);
+}
+
+nav .avatar {
+  object-fit: cover;
+}
+
+main {
+  min-height: 100vh;
+}
+
+
+article img.cat-vision {
+  width: 100%;
+}
+
+.article-body, .article-suggestions {
+  padding: 3.1rem 2.6rem 2.4rem;
+}
+
+article{
+  --delay: .2s;
+  animation: appear .4s var(--delay) backwards;
+}
+
+.article-suggestions {
+  --delay: .4s
+  animation: appear .4s var(--delay) backwards;
+}
+
+article .article-title {
+  margin-bottom: 3.1rem;
+}
+
+article .article-title h1 {
+  color: var(--color-title);
+  font-size: clamp(1.6rem, 2vw + 1rem, 2.4rem);
+  font-weight: 700;
+  line-height: 160%;
+}
+
+.interaction-buttons {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: .8rem;
+  
+}
+
+article .article-body p {
+  color: var(--color-text);
+  font-size: clamp(1.2rem, 1vw + 1rem, 1.6rem);
+  font-weight: 400;
+  line-height: 2.56rem;
+  text-align: justify;
+}
+
+.article-body p + p {
+  margin-top: .8rem;
+}
+
+.article-suggestions h2 {
+  color: var(--color-title);
+  font-size: clamp(1.6rem, 2vw + 1rem, 2.4rem);
+  font-weight: 700;
+  line-height: 3.84rem;
+}
+
+.article-suggestions figure {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 3.4rem;
+  margin-bottom: 3.4rem;
+
+  --delay: .6s;
+  animation: appear .4s var(--delay) backwards;
+}
+
+figure img {
+  width: 45%;
+  height: 100%;
+  border-radius: .5rem;
+  object-fit: cover;
+}
+
+figure figcaption h3 {
+  color: var(--color-title);
+  font-size: clamp(1.2rem, 1vw + 1rem, 1.8rem);
+  font-weight: 700;
+  line-height: clamp(1.4rem, 1vw + .4rem, 2.88rem);
+}
+
+figure figcaption p {
+  color: var(--color-text);
+  font-size: clamp(1.2rem, 1vw + .3rem, 1.4rem);
+  font-weight: 400;
+  line-height: clamp(1.4rem, 2vw + 1rem, 2.24rem);
+}
+
+footer {
+  width: 100%;
+  height: 6.4rem;
+  padding: 1.6rem;
+
+  background-color: var(--color-footer);
+
+  --startY: 100%;
+  animation: move .2s;
+}
+
+footer p {
+  text-align: center;
+  font-size: clamp(1.2rem, 1vw + 1rem, 1.6rem);  font-weight: 600;
+  color: var(--color-white);
+}
+
+@media (min-width: 750px) {
+  article .article-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .article-suggestions figure {
+    width: 38.4rem;
+  }
+
+  figure img {
+    width: 15.1rem;
+  }
+
+  figure figcaption p {
+    margin-top: .8rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    max-width: 120rem;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3.4rem;
+    justify-items: center;
+    margin: 4.4rem auto;
+  } 
+
+  .article-body, .article-suggestions {
+    padding: 0;
+  }
+
+  .article-suggestions {
+    
+  }
+
+  article img.cat-vision {
+    border-radius: .5rem;
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateY(var(--startY));
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
